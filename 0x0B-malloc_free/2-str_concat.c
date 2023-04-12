@@ -39,6 +39,10 @@ char *str_concat(char *s1, char *s2)
 	a1 = _strlen(s1);
 	a2 = _strlen(s2);
 	b = malloc((a1 + a2) * sizeof(char) + 1);
+	if (b == 0)
+	{
+		return (0);
+	}
 	for (i = 0; i <= a1 + a2; i++)
 	{
 		if (i < a1)
