@@ -26,11 +26,13 @@ int main(int ac, char **av)
 	fd_to = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, PERMISSIONS);
 	if (fd_to == -1)
 		dprintf(STDERR_FILENO, ERR_NOWRITE, av[2]), exit(99);
+
 	while ((b = read(fd_from, buf, READ_BUF_SIZE)) > 0)
 		if (write(fd_to, buf, b) != b)
 			dprintf(STDERR_FILENO, ERR_NOWRITE, av[2]), exit(99);
 	if (b == -1)
 		dprintf(STDERR_FILENO, ERR_NOREAD, av[1]), exit(98);
+
 	fd_from = close(fd_from);
 	fd_to = close(fd_to);
 	if (fd_from)
