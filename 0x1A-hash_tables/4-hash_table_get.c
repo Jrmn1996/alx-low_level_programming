@@ -9,10 +9,10 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 {
 	unsigned long int index;
 	hash_node_t *temp;
-	
+
 	if (ht == NULL || ht->array == NULL || ht->size == 0 ||
-        key == NULL || strlen(key) == 0)
-                return (0);
+	key == NULL || strlen(key) == 0)
+		return (0);
 	index = kzy_index((const unsigned char *)key, ht->size);
 	temp = ht->array[index];
 	while (temp != NULL)
